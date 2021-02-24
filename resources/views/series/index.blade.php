@@ -12,8 +12,9 @@
     @endif
     
     <a href="{{route('series.store')}}" class="btn btn-dark mb-2"> Adicionar</a>
-        <ul class="list-group">
-            @foreach($series as $serie)
+         @foreach($series as $serie)
+            <ul class="list-group">
+           
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     <span id="nome-serie-{{ $serie->id }}">{{ $serie->nome }}</span>
 
@@ -45,8 +46,9 @@
                         </form>
                     </span>
             </li>
-            @endforeach
-        </ul>
+            </ul>
+        @endforeach
+        
 <script> 
     function chamaInput(serieId){
     

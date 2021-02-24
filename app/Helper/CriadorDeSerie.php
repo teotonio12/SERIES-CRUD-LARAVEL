@@ -22,7 +22,7 @@ class CriadorDeSerie
 
     public function criarTemporadas($qtdTemporadas, $serie, $ep_temporadas){
 
-        for ($i=1; $i < $qtdTemporadas; $i++) { 
+        for ($i=1; $i <= $qtdTemporadas; $i++) { 
             $temporada = $serie->temporadas()->create(['numero' => $i]);
             
             $this->criarEpisodios($ep_temporadas,$temporada);
@@ -32,7 +32,7 @@ class CriadorDeSerie
     public function criarEpisodios ($ep_temporadas,$temporada)
     {
         for ($j=1; $j <= $ep_temporadas; $j++) { 
-            $temporada->epsodios()->create(['numero' => $j]);
+            $temporada->episodios()->create(['numero' => $j]);
         }
     }
 }

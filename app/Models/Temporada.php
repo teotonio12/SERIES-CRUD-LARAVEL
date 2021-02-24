@@ -10,7 +10,7 @@ class Temporada extends Model
     protected $fillable = ['numero'];
     public $timestamps = false;
 
-    public function epsodios(){
+    public function episodios(){
         return $this->hasMany(Episodio::class);
     }
 

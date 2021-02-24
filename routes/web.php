@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::get('/', function (){
+    return view('welcome');
+});
+
 Route::group(['namespace' => 'App\http\Controllers\\'], function () {
    
     Route::get('/series', 'SeriesController@index')->name('series.index');
@@ -14,11 +18,9 @@ Route::group(['namespace' => 'App\http\Controllers\\'], function () {
 
     Route::delete('series/{id}' , 'SeriesController@destroy')->name('series.destroy');
 
-});
+    Route::get('/series/{id}/temporadas', 'TemporadaController@index')->name('temporada.index');
 
-Route::group(['namespace' => 'App\http\Controllers\\'], function () {
-
-    Route::get('/series/{id}/temporadas', 'TemporadaController@index');
+    Route::get('/temporadas/{temporada}/episodios', 'EpisodiosController@index')->name('episodios.index');
 
 });
 
