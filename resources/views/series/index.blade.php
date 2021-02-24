@@ -5,11 +5,8 @@
 @endsection
 
 @section('conteudo')
-    @if(!empty($mensagem))
-        <div class= "alert alert-success">
-        {{$mensagem}}
-    </div>
-    @endif
+
+@include('mensagem', ['mensagem' => $mensagem])
     
     <a href="{{route('series.store')}}" class="btn btn-dark mb-2"> Adicionar</a>
          @foreach($series as $serie)

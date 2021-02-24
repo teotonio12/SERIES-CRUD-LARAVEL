@@ -34,7 +34,7 @@ class DeletadorDeSerie
 
     private function removerEpisodios ( Temporada $temporada):void
     {
-        $temporada->epsodios()->each(
+        $temporada->episodios()->each(
             function (Episodio $episodio) {
                 $episodio->delete();
             }

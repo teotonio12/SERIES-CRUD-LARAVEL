@@ -22,6 +22,15 @@ Route::group(['namespace' => 'App\http\Controllers\\'], function () {
 
     Route::get('/temporadas/{temporada}/episodios', 'EpisodiosController@index')->name('episodios.index');
 
+    Route::post('/temporadas/{temporada}/episodios/assitir' , 'EpisodiosController@assistir')->name('series.assistir');
+
+    Route::get('/entrar' , 'EntrarController@index')->name('entrar.index');
+
+    Route::post('/entrar' , 'EntrarController@entrar')->name('entrar.entrar');
+
+    
+
+
 });
 
 

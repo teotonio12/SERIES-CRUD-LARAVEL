@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Serie;
-use Illuminate\Http\Request;
 
 class TemporadaController extends Controller
 {
@@ -18,4 +17,6 @@ class TemporadaController extends Controller
             'temporadas.index' , 
             compact('serie','temporadas'));
     }
+
+    
 }
