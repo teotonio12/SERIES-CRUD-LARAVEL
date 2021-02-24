@@ -12,9 +12,13 @@ class Serie extends Model
 
 
     #se eu não quiser salvar as colunas created_at e update_at
-    # public $timestamps = false;
+    public $timestamps = false;
 
     #colunas preenchiveis
     protected $fillable = ['nome'];
 
+    public function temporadas ()
+    {
+        return $this->hasMany(Temporada::class);    
+    }
 }
