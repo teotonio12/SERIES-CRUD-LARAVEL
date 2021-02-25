@@ -14,27 +14,31 @@ class User extends Model implements Authenticatable
     public $timestamps = false;
 
     public function getAuthIdentifierName(){
-        
+        return $this->getKeyName();
     }
 
     public function getAuthPassword(){
-        
+        return $this->password;
     }
 
     public function getAuthIdentifier(){
-        
+        return $this->{$this->getAuthIdentifierName()};
     }
 
     public function getRememberToken(){
-        
+        if (! empty($this->getRememberTokenName())) {
+            return (string) $this->{$this->getRememberTokenName()};
+        }
     }
 
-    public function setRememberToken($token){
-        
+    public function setRememberToken($value){
+        if (! empty($this->getRememberTokenName())) {
+            $this->{$this->getRememberTokenName()} = $value;
+        }
     }
 
     public function getRememberTokenName(){
-        
+        return $this->rememberTokenName;
     }
 
 }

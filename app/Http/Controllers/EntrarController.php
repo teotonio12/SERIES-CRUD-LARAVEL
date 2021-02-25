@@ -15,7 +15,13 @@ class EntrarController extends Controller
     }
     
     public function entrar(Request $request){
-        if (!Auth::attempt($request->only(['email', 'password']))){
+        
+        $credentials = [
+            'email' => $request['email'],
+            'password' => $request['password'],
+        ];
+        
+        if (!Auth::attempt($credentials)){
             return redirect()
                 ->back()
                 ->withErrors('Usuário e/ou senha incorreta');
@@ -24,4 +30,8 @@ class EntrarController extends Controller
         return redirect()->route('series.index');
     }
 
+    public function sair(){
+        Auth::logout();
+        return redirect('/entrar'); 
+    }
 }
