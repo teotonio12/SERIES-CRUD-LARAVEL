@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['namespace' => 'App\http\Controllers\\','prefix' => '/series'], function () {
@@ -17,7 +18,6 @@ Route::group(['namespace' => 'App\http\Controllers\\','prefix' => '/series'], fu
     Route::get('/{id}/temporadas', 'TemporadaController@index')->name('temporada.index');
 
 });
-
 
 Route::group(['namespace' => 'App\http\Controllers\\','prefix' => '/temporadas'], function () {
    
@@ -47,4 +47,37 @@ Route::group(['namespace' => 'App\http\Controllers\\','prefix' => '/sair'], func
    
     Route::get('/', 'EntrarController@sair')->name('entrar.sair');
 
+});
+
+
+Route::get('/visualizando-email', function(){
+    return new App\Mail\NovaSerie(
+        'GOT',
+        '7',
+        '15'
+    );
+});
+
+Route::get('/enviando-email', function(){
+    $email =  new App\Mail\NovaSerie(
+        'GOT',
+        '7',
+        '15'
+    );
+
+    $user = (object) [
+        'email' => 'renan@teste.com',
+        'nome' => 'Renan Teotonio'
+    ];
+
+
+
+    Mail::to($user)->send($email);
+
+    return "email enviado";
+
+});
+
+Route::get('/template', function(){
+    return view('template.index');
 });
